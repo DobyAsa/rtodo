@@ -1,13 +1,13 @@
 use serde::Serialize;
 
-#[derive(Debug,PartialEq,Serialize)]
+#[derive(Debug, PartialEq, Serialize)]
 pub struct Todo {
     pub title: String,
     pub description: String,
-    pub status: TodoStatus
+    pub status: TodoStatus,
 }
 
-#[derive(Debug,PartialEq,Serialize)]
+#[derive(Debug, PartialEq, Serialize)]
 pub enum TodoStatus {
     Unfinished,
     Finished,

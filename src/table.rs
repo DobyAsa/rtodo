@@ -4,7 +4,7 @@ pub use crate::table::todo::Todo;
 use serde::Serialize;
 use std::collections::HashMap;
 
-#[derive(Debug,PartialEq,Serialize)]
+#[derive(Debug, PartialEq, Serialize)]
 pub struct Table {
     todos: HashMap<usize, Todo>,
     next_id: usize,
@@ -24,11 +24,11 @@ impl Table {
         self.next_id - 1
     }
 
-    fn remove_todo_by_id(&mut self, id: usize) {
-        self.todos.remove(&id);
+    fn remove_todo_by_id(&mut self, id: usize) -> Option<Todo> {
+        self.todos.remove(&id)
     }
 
-    pub fn modify_todo(&mut self, id: usize, new_todo: Todo) -> Result<&Todo, String> {
+    pub fn modify_todo_by_id(&mut self, id: usize, new_todo: Todo) -> Result<&Todo, String> {
         if let Some(todo) = self.todos.get_mut(&id) {
             todo.modify_title(new_todo.title);
             todo.modify_description(new_todo.description);
@@ -38,7 +38,7 @@ impl Table {
         }
     }
 
-    pub fn get_todos(&self, id: usize) -> Option<&Todo> {
+    pub fn get_todo_by_id(&self, id: usize) -> Option<&Todo> {
         self.todos.get(&id)
     }
 
