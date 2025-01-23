@@ -1,16 +1,11 @@
-use std::io::stdout;
+use crate::table::{Table, Todo};
 
-use crossterm::{execute, style::Print};
-
-mod todo;
 mod table;
 
-fn main() -> Result<(), Box<dyn std::error::Error>>{
-    execute!(
-        stdout(),
-        Print("Hello "),
-        Print("Crossterm!\n")
-    )?;
+fn main() {
+    let mut table = Table::new();
 
-    Ok(())
+    table.add_todo(Todo::new("todo".to_string(), "enheng".to_string()));
+
+    println!("{}", table.serialize().unwrap());
 }
