@@ -1,0 +1,12 @@
+[package]
+name = "rtodo"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+# serialization
+serde = { version = "1.0.217", features = ["derive"]}
+serde_json ={ version = "1.0.137"}
+
+# terminal manipulation
+crossterm ={ version = "0.28.1"}
